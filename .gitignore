@@ -96,4 +96,7 @@ sw.*
 
 # Generated media files
 /server/public/uploads
-/client/public/uploads
+/client/public/uploadsnode_modules/
+client/node_modules/
+server/node_modules/
+**/.cache/
