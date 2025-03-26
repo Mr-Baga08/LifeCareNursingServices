@@ -24,13 +24,13 @@ import LightModeIcon from '@mui/icons-material/LightMode';
 import PhoneIcon from '@mui/icons-material/Phone';
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 
-// Navigation links
+// Updated Navigation links with Careers and Gallery
 const navLinks = [
   { title: 'Home', path: '/' },
   { title: 'Services', path: '/#services' },
   { title: 'About', path: '/#about' },
-  { title: 'Reviews', path: '/#reviews' },
-  { title: 'FAQ', path: '/#faq' },
+  { title: 'Gallery', path: '/gallery' }, // New Gallery link
+  { title: 'Careers', path: '/careers' }, // New Careers link
   { title: 'Contact', path: '/#contact' },
 ];
 
@@ -64,6 +64,20 @@ const Header = ({ darkMode, toggleTheme }) => {
     }
   };
 
+  // Check if route is active
+  const isActive = (path) => {
+    if (path === '/') {
+      return location.pathname === '/' && !location.hash;
+    }
+    
+    if (path.startsWith('/#')) {
+      return location.hash === path.substring(1);
+    }
+    
+    // For normal routes like /gallery and /careers
+    return location.pathname === path;
+  };
+
   // Update active section based on scroll position
   useEffect(() => {
     const handleScroll = () => {
@@ -90,7 +104,7 @@ const Header = ({ darkMode, toggleTheme }) => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); // Empty dependency array fixed here
+  }, []);
 
   // Create the drawer content
   const drawerContent = (
@@ -115,11 +129,9 @@ const Header = ({ darkMode, toggleTheme }) => {
             sx={{ 
               borderRadius: 1,
               mb: 1,
-              color: (link.path === '/' && activeSection === 'home') || 
-                     (link.path === '/#' + activeSection) ? 
+              color: isActive(link.path) ? 
                      theme.palette.primary.main : 'text.primary',
-              backgroundColor: (link.path === '/' && activeSection === 'home') || 
-                              (link.path === '/#' + activeSection) ? 
+              backgroundColor: isActive(link.path) ? 
                               theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 113, 227, 0.05)' : 'transparent',
               '&:hover': {
                 backgroundColor: theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(0, 113, 227, 0.08)',
@@ -129,8 +141,7 @@ const Header = ({ darkMode, toggleTheme }) => {
             <ListItemText 
               primary={link.title} 
               primaryTypographyProps={{ 
-                fontWeight: (link.path === '/' && activeSection === 'home') || 
-                           (link.path === '/#' + activeSection) ? 600 : 400 
+                fontWeight: isActive(link.path) ? 600 : 400 
               }} 
             />
           </ListItem>
@@ -155,7 +166,7 @@ const Header = ({ darkMode, toggleTheme }) => {
           color="primary" 
           fullWidth
           startIcon={<PhoneIcon />}
-          href="tel:+919937331708"
+          href="tel:+919583604949"
         >
           Call Us
         </Button>
@@ -220,16 +231,13 @@ const Header = ({ darkMode, toggleTheme }) => {
                       sx={{ 
                         mx: 1,
                         position: 'relative',
-                        color: (link.path === '/' && activeSection === 'home') || 
-                               (link.path === '/#' + activeSection) ? 
+                        color: isActive(link.path) ? 
                                theme.palette.primary.main : 'text.primary',
-                        fontWeight: (link.path === '/' && activeSection === 'home') || 
-                                   (link.path === '/#' + activeSection) ? 600 : 500,
+                        fontWeight: isActive(link.path) ? 600 : 500,
                         '&::after': {
                           content: '""',
                           position: 'absolute',
-                          width: (link.path === '/' && activeSection === 'home') || 
-                                 (link.path === '/#' + activeSection) ? '100%' : '0%',
+                          width: isActive(link.path) ? '100%' : '0%',
                           height: '2px',
                           bottom: '0',
                           left: '0',

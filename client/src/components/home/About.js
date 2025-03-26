@@ -21,12 +21,13 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 // Team members data
 const teamMembers = [
   {
-    id: 1,
-    name: 'Dr. Rajesh Sharma',
-    position: 'Medical Director',
-    image: '/images/team/doctor-1.jpg',
-    description: 'Dr. Sharma has over 15 years of experience in geriatric care and oversees all medical aspects of our services.'
-  },
+    "id": 1,
+    "name": "Coming Soon",
+    "position": "Our Medical Experts",
+    "image": "/images/team/coming-soon.jpg",
+    "description": "Our dedicated team of medical professionals will be announced soon. Stay tuned!"
+}
+,
   {
     id: 2,
     name: 'Priya Patel',
@@ -110,7 +111,7 @@ const About = () => {
                   mb: 3,
                 }}
               >
-                Professional Home Healthcare You Can Trust
+                 Healthcare at Your Home That You Can Trust
               </Typography>
               <Typography
                 variant="body1"
@@ -126,7 +127,7 @@ const About = () => {
                 paragraph
                 sx={{ mb: 4 }}
               >
-                We understand that recovering at home can significantly improve a patient's well-being and quality of life. Our mission is to provide compassionate, reliable, and professional healthcare services in the comfort of the patient's home environment.
+                We understand that recovering at home can significantly improve a patient's well-being and quality of life. Our mission is to provide compassionate, reliable, and dedicated healthcare services in the comfort of the patient's home environment.
               </Typography>
               <Button
                 variant="contained"
@@ -199,9 +200,9 @@ const About = () => {
         {/* Features Section */}
         <Box sx={{ mt: 10 }}>
           <Grid container spacing={3}>
-            <Grid item xs={12} sm={6} md={3}>
+            {/* <Grid item xs={12} sm={6} md={3}>
               <motion.div variants={itemVariants}>
-                <Card 
+                {/* <Card 
                   elevation={1}
                   sx={{
                     height: '100%',
@@ -225,7 +226,7 @@ const About = () => {
                     >
                       <MedicalServicesIcon />
                     </Avatar>
-                    <Typography 
+                    {/* <Typography 
                       variant="h6" 
                       component="h3" 
                       gutterBottom
@@ -235,11 +236,11 @@ const About = () => {
                     </Typography>
                     <Typography variant="body2" color="textSecondary">
                       Our team consists of certified nurses and caregivers with extensive experience in their respective fields.
-                    </Typography>
+                    </Typography> }
                   </CardContent>
-                </Card>
+                </Card> }
               </motion.div>
-            </Grid>
+            </Grid> */}
             
             <Grid item xs={12} sm={6} md={3}>
               <motion.div variants={itemVariants}>

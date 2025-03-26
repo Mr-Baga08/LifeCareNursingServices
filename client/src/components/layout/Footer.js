@@ -108,21 +108,21 @@ const Footer = () => {
               </Typography>
               
               <Typography variant="body2" sx={{ mb: 3, opacity: 0.7, maxWidth: 350 }}>
-                Providing professional and compassionate home healthcare services to improve the quality of life for our patients in the comfort of their homes.
+                Providing reliable and compassionate home healthcare services to improve the quality of life for our patients in the comfort of their homes.
               </Typography>
               
               <Stack spacing={2}>
                 <Box sx={{ display: 'flex', alignItems: 'flex-start' }}>
                   <LocationOnOutlinedIcon sx={{ mr: 1, mt: 0.3, color: theme.palette.primary.main }} />
                   <Typography variant="body2" sx={{ opacity: 0.7 }}>
-                    PlotNo: K9 A MIG-269 Kalinga Nagar Patrapada, near DN Regalia Mall, Tamando, Bhubaneswar, Odisha 751019
+                    Plot No -1611 , Gangapada, Gate, near Jatni, Bhubaneswar, Odisha 752054
                   </Typography>
                 </Box>
                 
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>
                   <PhoneOutlinedIcon sx={{ mr: 1, color: theme.palette.primary.main }} />
                   <Typography variant="body2" sx={{ opacity: 0.7 }}>
-                    +91 99373 31708
+                    +91 95836 04949
                   </Typography>
                 </Box>
                 

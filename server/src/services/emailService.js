@@ -39,7 +39,7 @@ exports.sendBookingConfirmation = async (email, data) => {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 5px; background-color: #f9f9f9;">
           <div style="text-align: center; margin-bottom: 30px;">
             <h1 style="color: #0071e3; margin: 0;">Life Care Home Nursing</h1>
-            <p style="color: #666;">Professional Home Healthcare Services</p>
+            <p style="color: #666;">Reliable and Trustworthy Home Healthcare Services</p>
           </div>
           
           <div style="background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
@@ -55,13 +55,13 @@ exports.sendBookingConfirmation = async (email, data) => {
               <p><strong>Estimated Price:</strong> ₹${price}</p>
             </div>
             
-            <p>If you have any questions or need to make changes to your booking, please contact us at <a href="tel:+919937331708">+91 99373 31708</a> or reply to this email.</p>
+            <p>If you have any questions or need to make changes to your booking, please contact us at <a href="tel:+919937331708">+91 95836 04949</a> or reply to this email.</p>
           </div>
           
           <div style="text-align: center; margin-top: 30px; color: #666; font-size: 12px;">
             <p>Life Care Home Nursing</p>
-            <p>PlotNo: K9 A MIG-269 Kalinga Nagar Patrapada, near DN Regalia Mall, Tamando, Bhubaneswar, Odisha 751019</p>
-            <p>Phone: +91 99373 31708 | Email: info@lifecarehomenursing.com</p>
+            <p>Plot No -1611 , Gangapada, Gate, near Jatni, Bhubaneswar, Odisha 752054</p>
+            <p>Phone: +91 95836 04949 | Email: info@lifecarehomenursing.com</p>
           </div>
         </div>
       `
@@ -177,7 +177,7 @@ exports.sendStatusUpdate = async (email, data) => {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 5px; background-color: #f9f9f9;">
           <div style="text-align: center; margin-bottom: 30px;">
             <h1 style="color: #0071e3; margin: 0;">Life Care Home Nursing</h1>
-            <p style="color: #666;">Professional Home Healthcare Services</p>
+            <p style="color: #666;">Reliable and Trustworthy Home Healthcare Services</p>
           </div>
           
           <div style="background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
@@ -191,13 +191,13 @@ exports.sendStatusUpdate = async (email, data) => {
               <p><strong>Status:</strong> <span style="text-transform: capitalize;">${status}</span></p>
             </div>
             
-            <p>If you have any questions or need further assistance, please contact us at <a href="tel:+919937331708">+91 99373 31708</a> or reply to this email.</p>
+            <p>If you have any questions or need further assistance, please contact us at <a href="tel:+919937331708">+91 95836 04949</a> or reply to this email.</p>
           </div>
           
           <div style="text-align: center; margin-top: 30px; color: #666; font-size: 12px;">
             <p>Life Care Home Nursing</p>
-            <p>PlotNo: K9 A MIG-269 Kalinga Nagar Patrapada, near DN Regalia Mall, Tamando, Bhubaneswar, Odisha 751019</p>
-            <p>Phone: +91 99373 31708 | Email: info@lifecarehomenursing.com</p>
+            <p>Plot No -1611 , Gangapada, Gate, near Jatni, Bhubaneswar, Odisha 752054</p>
+            <p>Phone: +91 95836 04949 | Email: info@lifecarehomenursing.com</p>
           </div>
         </div>
       `
@@ -264,7 +264,7 @@ exports.sendContactFormSubmission = async (data) => {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 5px; background-color: #f9f9f9;">
           <div style="text-align: center; margin-bottom: 30px;">
             <h1 style="color: #0071e3; margin: 0;">Life Care Home Nursing</h1>
-            <p style="color: #666;">Professional Home Healthcare Services</p>
+            <p style="color: #666;">Reliable and Trustworthy Home Healthcare Services</p>
           </div>
           
           <div style="background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
@@ -272,13 +272,13 @@ exports.sendContactFormSubmission = async (data) => {
             <p>Dear ${name},</p>
             <p>Thank you for contacting Life Care Home Nursing. This is to confirm that we have received your message regarding "${subject}".</p>
             <p>Our team will review your inquiry and respond within 24 hours during business days.</p>
-            <p>If your matter is urgent, please call us directly at <a href="tel:+919937331708">+91 99373 31708</a>.</p>
+            <p>If your matter is urgent, please call us directly at <a href="tel:+919937331708">+91 95836 04949</a>.</p>
           </div>
           
           <div style="text-align: center; margin-top: 30px; color: #666; font-size: 12px;">
             <p>Life Care Home Nursing</p>
-            <p>PlotNo: K9 A MIG-269 Kalinga Nagar Patrapada, near DN Regalia Mall, Tamando, Bhubaneswar, Odisha 751019</p>
-            <p>Phone: +91 99373 31708 | Email: info@lifecarehomenursing.com</p>
+            <p>Plot No -1611 , Gangapada, Gate, near Jatni, Bhubaneswar, Odisha 752054</p>
+            <p>Phone: +91 95836 04949 | Email: info@lifecarehomenursing.com</p>
           </div>
         </div>
       `
@@ -310,7 +310,7 @@ exports.sendNewsletterConfirmation = async (email) => {
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 5px; background-color: #f9f9f9;">
           <div style="text-align: center; margin-bottom: 30px;">
             <h1 style="color: #0071e3; margin: 0;">Life Care Home Nursing</h1>
-            <p style="color: #666;">Professional Home Healthcare Services</p>
+            <p style="color: #666;">Reliable and Trustworthy Home Healthcare Services</p>
           </div>
           
           <div style="background-color: white; padding: 20px; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
@@ -321,8 +321,8 @@ exports.sendNewsletterConfirmation = async (email) => {
           
           <div style="text-align: center; margin-top: 30px; color: #666; font-size: 12px;">
             <p>Life Care Home Nursing</p>
-            <p>PlotNo: K9 A MIG-269 Kalinga Nagar Patrapada, near DN Regalia Mall, Tamando, Bhubaneswar, Odisha 751019</p>
-            <p>Phone: +91 99373 31708 | Email: info@lifecarehomenursing.com</p>
+            <p>Plot No -1611 , Gangapada, Gate, near Jatni, Bhubaneswar, Odisha 752054</p>
+            <p>Phone: +91 95836 04949 | Email: info@lifecarehomenursing.com</p>
           </div>
         </div>
       `

@@ -43,9 +43,9 @@ const servicesData = [
     image: '/images/physical-therapy.jpg',
   },
   {
-    id: 'wound-care',
-    title: 'Wound Care',
-    description: 'Professional treatment for wounds, including dressing changes and infection prevention.',
+    id: 'tracheostomy-care',
+    title: 'Tracheostomy Care',
+    description: 'Expert Tracheostomy Care at Home – Safe, compassionate, and professional support for your loved ones.',
     image: '/images/wound-care.jpg',
   },
   {

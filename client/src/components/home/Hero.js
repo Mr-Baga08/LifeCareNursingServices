@@ -93,7 +93,7 @@ const Hero = () => {
                     display: 'inline-block'
                   }}
                 >
-                  Professional <br /> Home Healthcare Services
+                  Reliable and Trustworthy <br /> Home Healthcare Services
                 </Typography>
               </motion.div>
               
@@ -107,7 +107,7 @@ const Hero = () => {
                     maxWidth: { md: '90%' }
                   }}
                 >
-                  Life Care Home Nursing provides compassionate and professional healthcare services 
+                  Life Care Home Nursing provides compassionate and reliable healthcare services 
                   in the comfort of your home. Our trained staff ensures personalized care for elderly, 
                   post-operative, and chronically ill patients.
                 </Typography>

@@ -20,8 +20,8 @@ const WhatsappButton = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   
-  // Phone number for WhatsApp (without +)
-  const phoneNumber = '919937331708';
+  // Updated Phone number for WhatsApp (without +)
+  const phoneNumber = '919583604949';
   
   const toggleChat = () => {
     setOpen(!open);

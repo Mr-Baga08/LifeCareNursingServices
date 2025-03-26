@@ -180,7 +180,7 @@ const ContactSection = () => {
                         Our Location
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
-                        PlotNo: K9 A MIG-269 Kalinga Nagar Patrapada, near DN Regalia Mall, Tamando, Bhubaneswar, Odisha 751019
+                        Plot No -1611 , Gangapada, Gate, near Jatni, Bhubaneswar, Odisha 752054
                       </Typography>
                     </Box>
                   </Box>
@@ -207,7 +207,7 @@ const ContactSection = () => {
                         Phone Number
                       </Typography>
                       <Typography variant="body2" color="textSecondary">
-                        +91 99373 31708
+                        +91 95836 04949
                       </Typography>
                     </Box>
                   </Box>

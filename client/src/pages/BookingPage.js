@@ -88,7 +88,7 @@ const BookingPage = () => {
               zIndex: 2
             }}
           >
-            Fill out the form below to book professional home healthcare services from 
+            Fill out the form below to book reliable home healthcare services from 
             Life Care. Our team will contact you shortly to confirm your booking and discuss 
             any specific requirements.
           </Typography>
@@ -122,7 +122,7 @@ const BookingPage = () => {
                   our team will contact you within 24 hours to confirm availability and discuss specific requirements.
                 </Typography>
                 <Typography variant="body2" paragraph color="text.secondary">
-                  For urgent requests, please call us directly at <strong>+91 99373 31708</strong>.
+                  For urgent requests, please call us directly at <strong>+91 95836 04949</strong>.
                 </Typography>
               </Paper>
               

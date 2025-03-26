@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom'; // Remove BrowserRouter import
+import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
+import CssBaseline from '@mui/material/CssBaseline'; // Fixed import path
 import { lightTheme, darkTheme } from './styles/theme';
 import { ToastProvider } from './context/ToastContext';
 import Header from './components/layout/Header';
@@ -12,6 +12,8 @@ import ScrollToTop from './components/ui/ScrollToTop';
 import Home from './pages/Home';
 import ServiceDetail from './pages/ServiceDetail';
 import BookingPage from './pages/BookingPage';
+import CareersPage from './pages/CareersPage';
+import GalleryPage from './pages/GalleryPage';
 import NotFound from './pages/NotFound';
 import './styles/globals.css';
 
@@ -48,13 +50,14 @@ function App() {
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <ToastProvider>
         <CssBaseline />
-        {/* Remove the Router wrapper here */}
         <Header darkMode={darkMode} toggleTheme={toggleTheme} />
         <main>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/services/:serviceId" element={<ServiceDetail />} />
             <Route path="/booking" element={<BookingPage />} />
+            <Route path="/careers" element={<CareersPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
@@ -64,7 +67,6 @@ function App() {
         {!cookieAccepted && (
           <CookieConsent onAccept={() => handleCookieConsent(true)} onReject={() => handleCookieConsent(false)} />
         )}
-        {/* End of removed Router */}
       </ToastProvider>
     </ThemeProvider>
   );

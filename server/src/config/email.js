@@ -17,8 +17,8 @@ module.exports = {
     
     // Company info
     companyName: 'Life Care Home Nursing',
-    companyAddress: 'PlotNo: K9 A MIG-269 Kalinga Nagar Patrapada, near DN Regalia Mall, Tamando, Bhubaneswar, Odisha 751019',
-    companyPhone: '+91 99373 31708',
+    companyAddress: 'Plot No -1611 , Gangapada, Gate, near Jatni, Bhubaneswar, Odisha 752054',
+    companyPhone: '+91 95836 04949',
     companyEmail: 'info@lifecarehomenursing.com',
     companyWebsite: 'https://lifecarehomenursing.com'
   };

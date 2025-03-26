@@ -72,13 +72,17 @@ router.delete('/:id', protect, reviewController.deleteReview);
  * @desc    Add admin reply to review
  * @access  Private (Admin only)
  */
-router.post(
-  '/:id/reply',
-  auth,
-  [
-    check('reply', 'Reply content is required').not().isEmpty()
-  ],
-  reviewController.addReplyToReview
-);
+// router.post(
+//   '/:id/reply',
+//   protect,
+//   [
+//     check('reply', 'Reply content is required').not().isEmpty()
+//   ],
+//   reviewController.addReplyToReview
+// );
+
+router.post('/:id/reply', protect, authorize('admin'), [
+  check('reply', 'Reply content is required').not().isEmpty()
+], reviewController.addReplyToReview);
 
 module.exports = router; 

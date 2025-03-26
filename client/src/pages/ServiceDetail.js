@@ -145,13 +145,11 @@ const servicesData = {
   },
   'wound-care': {
     id: 'wound-care',
-    title: 'Wound Care',
-    description: 'Professional treatment for wounds, including dressing changes and infection prevention.',
+    title: 'Tracheostomy Care',
+    description: 'Expert Tracheostomy Care at Home – Safe, compassionate, and reliable support for your loved ones.',
     image: '/images/services/wound-care.jpg',
     longDescription: `
-      Our specialized Wound Care service provides professional management of acute and chronic wounds 
-      in the comfort of your home. Our skilled nurses are trained in advanced wound care techniques 
-      to promote healing, prevent infection, and reduce complications for a variety of wound types.
+      Experience expert, personalized tracheostomy care in the comfort of your home. Our skilled nursing team ensures safe airway management, infection control, and round-the-clock support, giving you and your loved ones peace of mind. Trusted care, where you need it most.
     `,
     benefits: [
       'Professional assessment and treatment of wound conditions',
