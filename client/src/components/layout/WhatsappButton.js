@@ -20,7 +20,7 @@ const WhatsappButton = () => {
   const [open, setOpen] = useState(false);
   const [message, setMessage] = useState('');
   
-  // Updated Phone number for WhatsApp (without +)
+  // WhatsApp phone number (without +)
   const phoneNumber = '919583604949';
   
   const toggleChat = () => {
@@ -32,8 +32,11 @@ const WhatsappButton = () => {
     if (message.trim()) {
       // Encode the message for URL
       const encodedMessage = encodeURIComponent(message);
-      // Open WhatsApp with pre-filled message
+      
+      // Correct WhatsApp URL format
+      // The format should be: https://wa.me/[number]?text=[message]
       window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+      
       setMessage('');
       setOpen(false);
     }
@@ -160,6 +163,7 @@ const WhatsappButton = () => {
         <IconButton
           color="inherit"
           aria-label="WhatsApp Chat"
+          onClick={toggleChat}
           sx={{
             position: 'fixed',
             bottom: 30,
@@ -186,7 +190,6 @@ const WhatsappButton = () => {
               }
             }
           }}
-          onClick={toggleChat}
         >
           <WhatsAppIcon fontSize="large" />
         </IconButton>

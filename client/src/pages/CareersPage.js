@@ -1,5 +1,4 @@
-// client/src/pages/CareersPage.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Box, 
   Container, 
@@ -12,7 +11,9 @@ import {
   Link,
   useTheme, 
   Divider,
-  Alert
+  Alert,
+  CircularProgress,
+  Skeleton
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -21,6 +22,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import { useToast } from '../context/ToastContext';
+import SEO from '../components/ui/SEO';
 
 // Validation schema for careers form
 const CareerFormSchema = Yup.object().shape({
@@ -68,6 +70,7 @@ const experienceLevels = [
 const CareersPage = () => {
   const theme = useTheme();
   const { showToast } = useToast();
+  const [loading, setLoading] = useState(false);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -132,6 +135,7 @@ const CareersPage = () => {
 
   return (
     <Box component="main">
+      <SEO title="Careers | Life Care Home Nursing" />
       {/* Page Header */}
       <Box 
         sx={{ 
@@ -476,6 +480,32 @@ const CareersPage = () => {
                             </TextField>
                           </Grid>
                           
+                          <Grid item xs={12} sm={6}>
+                            <TextField
+                              select
+                              fullWidth
+                              id="experience"
+                              name="experience"
+                              label="Experience Level"
+                              value={values.experience}
+                              onChange={handleChange}
+                              onBlur={handleBlur}
+                              error={touched.experience && Boolean(errors.experience)}
+                              helperText={touched.experience && errors.experience}
+                              variant="outlined"
+                              SelectProps={{
+                                native: true,
+                              }}
+                            >
+                              <option value=""></option>
+                              {experienceLevels.map((option) => (
+                                <option key={option.value} value={option.value}>
+                                  {option.label}
+                                </option>
+                              ))}
+                            </TextField>
+                          </Grid>
+                          
                           <Grid item xs={12}>
                             <Box sx={{ mb: 1 }}>
                               <Typography variant="body2" color="text.secondary" gutterBottom>
@@ -545,6 +575,7 @@ const CareersPage = () => {
                               size="large"
                               disabled={isSubmitting}
                               sx={{ mt: 2 }}
+                              startIcon={isSubmitting ? <CircularProgress size={20} color="inherit" /> : null}
                             >
                               {isSubmitting ? 'Submitting...' : 'Submit Application'}
                             </Button>
@@ -686,4 +717,3 @@ const CareersPage = () => {
 };
 
 export default CareersPage;
-                         

@@ -104,7 +104,7 @@ const Footer = () => {
                 }}
               >
                 <LocalHospitalIcon sx={{ mr: 1, color: theme.palette.primary.main }} />
-                Life<span style={{ color: theme.palette.primary.main }}>Care</span>
+                LifeCare<span style={{ color: theme.palette.primary.main }}>HomeNursing</span>
               </Typography>
               
               <Typography variant="body2" sx={{ mb: 3, opacity: 0.7, maxWidth: 350 }}>

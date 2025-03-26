@@ -23,7 +23,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import { contactService } from '../../api/contactService';
+import contactService from '../../api/contactService';
 import { useToast } from '../../context/ToastContext';
 
 // Validation schema for the contact form
@@ -72,31 +72,28 @@ const ContactSection = () => {
   };
 
   // Handle form submission
-  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
-    try {
-      // In a real app, this would send data to your backend
-      // const response = await contactService.sendContactMessage(values);
-      
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      showToast({
-        title: 'Message Sent',
-        message: 'Thank you for your message. We will get back to you shortly.',
-        type: 'success'
-      });
-      
-      resetForm();
-    } catch (error) {
-      showToast({
-        title: 'Message Failed',
-        message: error.message || 'There was a problem sending your message. Please try again.',
-        type: 'error'
-      });
-    } finally {
-      setSubmitting(false);
-    }
-  };
+const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+  try {
+    // Send message using contactService
+    await contactService.sendContactMessage(values);
+    
+    showToast({
+      title: 'Message Sent',
+      message: 'Thank you for your message. We will get back to you shortly.',
+      type: 'success'
+    });
+    
+    resetForm();
+  } catch (error) {
+    showToast({
+      title: 'Message Failed',
+      message: error.message || 'There was a problem sending your message. Please try again.',
+      type: 'error'
+    });
+  } finally {
+    setSubmitting(false);
+  }
+};
 
   return (
     <Box 

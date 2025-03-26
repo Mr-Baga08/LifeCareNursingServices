@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Box, 
   Container, 
@@ -15,25 +15,20 @@ import {
   Card,
   CardMedia,
   CardContent,
-  useMediaQuery
+  useMediaQuery,
+  CircularProgress,
+  Alert
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import CloseIcon from '@mui/icons-material/Close';
+import galleryService from '../api/galleryService';
+import SEO from '../components/ui/SEO';
 
-// Gallery categories
-const categories = [
-  { id: 'all', label: 'All' },
-  { id: 'facilities', label: 'Our Facilities' },
-  { id: 'team', label: 'Our Team' },
-  { id: 'patients', label: 'Patient Care' },
-  { id: 'events', label: 'Events' }
-];
-
-// Sample gallery data (in a real app, this would come from an API)
-const galleryData = [
+// Sample fallback gallery data in case API fails
+const fallbackGalleryData = [
   {
     id: 1,
     title: 'Modern Care Facility',
@@ -41,83 +36,16 @@ const galleryData = [
     image: '/images/gallery/facility-1.jpg',
     category: 'facilities'
   },
-  {
-    id: 2,
-    title: 'Nursing Team',
-    description: 'Our dedicated team of experienced nurses ready to provide the best care.',
-    image: '/images/gallery/team-1.jpg',
-    category: 'team'
-  },
-  {
-    id: 3,
-    title: 'Patient Rehabilitation',
-    description: 'Specialized physical therapy and rehabilitation services for faster recovery.',
-    image: '/images/gallery/patient-1.jpg',
-    category: 'patients'
-  },
-  {
-    id: 4,
-    title: 'Annual Health Camp',
-    description: 'Free health check-up camp organized for the community.',
-    image: '/images/gallery/event-1.jpg',
-    category: 'events'
-  },
-  {
-    id: 5,
-    title: 'Patient Room',
-    description: 'Comfortable and clean patient rooms designed for recovery.',
-    image: '/images/gallery/facility-2.jpg',
-    category: 'facilities'
-  },
-  {
-    id: 6,
-    title: 'Care Specialists',
-    description: 'Our specialized care team providing personalized treatment plans.',
-    image: '/images/gallery/team-2.jpg',
-    category: 'team'
-  },
-  {
-    id: 7,
-    title: 'Elder Care',
-    description: 'Compassionate care services for elderly patients.',
-    image: '/images/gallery/patient-2.jpg',
-    category: 'patients'
-  },
-  {
-    id: 8,
-    title: 'Medical Equipment',
-    description: 'Advanced medical equipment for accurate diagnosis and treatment.',
-    image: '/images/gallery/facility-3.jpg',
-    category: 'facilities'
-  },
-  {
-    id: 9,
-    title: 'Staff Training',
-    description: 'Regular training sessions to keep our staff updated with the latest healthcare practices.',
-    image: '/images/gallery/event-2.jpg',
-    category: 'events'
-  },
-  {
-    id: 10,
-    title: 'Administrative Team',
-    description: 'Our efficient administrative team ensuring smooth operations.',
-    image: '/images/gallery/team-3.jpg',
-    category: 'team'
-  },
-  {
-    id: 11,
-    title: 'Post-Operative Care',
-    description: 'Specialized care for patients recovering from surgery.',
-    image: '/images/gallery/patient-3.jpg',
-    category: 'patients'
-  },
-  {
-    id: 12,
-    title: 'Community Awareness Program',
-    description: 'Health awareness program conducted for local community members.',
-    image: '/images/gallery/event-3.jpg',
-    category: 'events'
-  }
+  // ... other items
+];
+
+// Sample fallback categories in case API fails
+const fallbackCategories = [
+  { id: 'all', label: 'All' },
+  { id: 'facilities', label: 'Our Facilities' },
+  { id: 'team', label: 'Our Team' },
+  { id: 'patients', label: 'Patient Care' },
+  { id: 'events', label: 'Events' }
 ];
 
 function GalleryPage() {
@@ -125,6 +53,10 @@ function GalleryPage() {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
   const [activeTab, setActiveTab] = useState('all');
   const [selectedImage, setSelectedImage] = useState(null);
+  const [categories, setCategories] = useState(fallbackCategories);
+  const [galleryData, setGalleryData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
@@ -152,6 +84,42 @@ function GalleryPage() {
     }
   };
 
+  // Fetch gallery data and categories
+  useEffect(() => {
+    const fetchGalleryData = async () => {
+      setLoading(true);
+      try {
+        // Fetch categories first
+        let categoriesData;
+        try {
+          categoriesData = await galleryService.getCategories();
+          // Add "All" option to the beginning
+          categoriesData = [{ id: 'all', label: 'All' }, ...categoriesData];
+          setCategories(categoriesData);
+        } catch (categoryError) {
+          console.error('Error fetching categories:', categoryError);
+          // Use fallback categories
+          setCategories(fallbackCategories);
+        }
+
+        // Fetch gallery items
+        const params = activeTab !== 'all' ? { category: activeTab } : {};
+        const data = await galleryService.getGalleryItems(params);
+        setGalleryData(data);
+        setError(null);
+      } catch (err) {
+        console.error('Error fetching gallery data:', err);
+        setError('Failed to load gallery. Please try again later.');
+        // Use fallback data
+        setGalleryData(fallbackGalleryData);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchGalleryData();
+  }, [activeTab]);
+
   // Handle tab change
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
@@ -174,6 +142,7 @@ function GalleryPage() {
 
   return (
     <Box component="main">
+      <SEO title="Gallery | Life Care Home Nursing" />
       {/* Page Header */}
       <Box 
         sx={{ 
@@ -304,55 +273,70 @@ function GalleryPage() {
             </Tabs>
           </Paper>
           
+          {/* Loading and Error States */}
+          {loading && (
+            <Box sx={{ display: 'flex', justifyContent: 'center', my: 8 }}>
+              <CircularProgress />
+            </Box>
+          )}
+          
+          {error && !loading && (
+            <Alert severity="error" sx={{ mb: 4 }}>
+              {error}
+            </Alert>
+          )}
+          
           {/* Gallery Grid */}
-          <Grid container spacing={3}>
-            {filteredGallery.map((item) => (
-              <Grid item xs={12} sm={6} md={4} key={item.id}>
-                <motion.div variants={itemVariants}>
-                  <Card 
-                    sx={{ 
-                      borderRadius: 2,
-                      overflow: 'hidden',
-                      cursor: 'pointer',
-                      height: '100%',
-                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                      '&:hover': {
-                        transform: 'translateY(-8px)',
-                        boxShadow: theme.shadows[10],
-                        '& .MuiCardMedia-root': {
-                          transform: 'scale(1.05)',
+          {!loading && (
+            <Grid container spacing={3}>
+              {filteredGallery.map((item) => (
+                <Grid item xs={12} sm={6} md={4} key={item.id}>
+                  <motion.div variants={itemVariants}>
+                    <Card 
+                      sx={{ 
+                        borderRadius: 2,
+                        overflow: 'hidden',
+                        cursor: 'pointer',
+                        height: '100%',
+                        transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                        '&:hover': {
+                          transform: 'translateY(-8px)',
+                          boxShadow: theme.shadows[10],
+                          '& .MuiCardMedia-root': {
+                            transform: 'scale(1.05)',
+                          }
                         }
-                      }
-                    }}
-                    onClick={() => handleImageClick(item)}
-                  >
-                    <Box sx={{ overflow: 'hidden' }}>
-                      <CardMedia
-                        component="img"
-                        height="240"
-                        image={item.image}
-                        alt={item.title}
-                        sx={{
-                          transition: 'transform 0.5s ease',
-                        }}
-                      />
-                    </Box>
-                    <CardContent>
-                      <Typography variant="h6" component="div" gutterBottom>
-                        {item.title}
-                      </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                        {item.description}
-                      </Typography>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </Grid>
-            ))}
-          </Grid>
+                      }}
+                      onClick={() => handleImageClick(item)}
+                    >
+                      <Box sx={{ overflow: 'hidden' }}>
+                        <CardMedia
+                          component="img"
+                          height="240"
+                          image={item.image}
+                          alt={item.title}
+                          sx={{
+                            transition: 'transform 0.5s ease',
+                          }}
+                        />
+                      </Box>
+                      <CardContent>
+                        <Typography variant="h6" component="div" gutterBottom>
+                          {item.title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {item.description}
+                        </Typography>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </Grid>
+              ))}
+            </Grid>
+          )}
           
           {/* Empty State */}
-          {filteredGallery.length === 0 && (
+          {!loading && filteredGallery.length === 0 && (
             <Box sx={{ textAlign: 'center', py: 8 }}>
               <Typography variant="h6" color="text.secondary">
                 No images found in this category.

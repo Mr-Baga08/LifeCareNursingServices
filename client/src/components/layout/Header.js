@@ -112,7 +112,7 @@ const Header = ({ darkMode, toggleTheme }) => {
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
         <Typography variant="h6" component="div" sx={{ display: 'flex', alignItems: 'center' }}>
           <LocalHospitalIcon sx={{ mr: 1, color: theme.palette.primary.main }} />
-          <span style={{ fontWeight: 700 }}>Life<span style={{ color: theme.palette.primary.main }}>Care</span></span>
+          <span style={{ fontWeight: 700 }}>LifeCare<span style={{ color: theme.palette.primary.main }}>HomeNursing</span></span>
         </Typography>
         <IconButton onClick={handleDrawerToggle} edge="end">
           <CloseIcon />
@@ -217,7 +217,7 @@ const Header = ({ darkMode, toggleTheme }) => {
                 }}
               >
                 <LocalHospitalIcon sx={{ mr: 1, color: theme.palette.primary.main }} />
-                Life<span style={{ color: theme.palette.primary.main }}>Care</span>
+                LifeCare<span style={{ color: theme.palette.primary.main }}>HomeNursing</span>
               </Typography>
 
               {/* Desktop Navigation */}

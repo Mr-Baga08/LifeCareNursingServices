@@ -11,6 +11,8 @@ const mongoose = require('mongoose');
 const bookingRoutes = require('./routes/bookingRoutes');
 const contactRoutes = require('./routes/contactRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
+const galleryRoutes = require('./routes/galleryRoutes'); // New gallery routes
+const careersRoutes = require('./routes/careersRoutes'); // New careers routes
 
 // Import middleware
 const errorHandler = require('./middleware/errorHandler');
@@ -40,10 +42,15 @@ app.use(express.urlencoded({ extended: false }));
 app.use(helmet()); // Adds various HTTP headers for security
 app.use(morgan('dev')); // Logging middleware
 
+// Serve uploaded files
+app.use('/uploads', express.static(path.join(__dirname, '../public/uploads')));
+
 // API Routes
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/contact', contactRoutes);
 app.use('/api/reviews', reviewRoutes);
+app.use('/api/gallery', galleryRoutes); // New gallery routes
+app.use('/api/careers', careersRoutes); // New careers routes
 
 // Health check route
 app.get('/api/health', (req, res) => {

@@ -1,5 +1,6 @@
 // client/src/api/contactService.js
 import api from './index';
+import emailService from '../utils/emailService';
 
 /**
  * Contact service for handling contact-related API requests
@@ -16,8 +17,16 @@ const contactService = {
    */
   sendContactMessage: async (contactData) => {
     try {
-      const response = await api.post('/contact', contactData);
-      return response.data;
+      // First, try sending via EmailJS
+      try {
+        await emailService.sendEmail(contactData);
+        return { success: true, message: 'Message sent successfully' };
+      } catch (emailError) {
+        console.error('EmailJS failed, falling back to API:', emailError);
+        // Fall back to API if EmailJS fails
+        const response = await api.post('/contact', contactData);
+        return response.data;
+      }
     } catch (error) {
       throw error.response?.data || { message: 'Error sending message' };
     }
